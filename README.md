@@ -1,5 +1,21 @@
 # reguai
 
+## Overview  
+Regulatory AI Agent is an AI-powered solution designed to improve regulatory compliance by monitoring, analyzing, and summarizing legal updates. It minimizes manual effort, enhances decision-making, and ensures organizations remain compliant with ever-evolving regulations.  
+
+## Staying Ahead of Regulatory Changes  
+Keeping up with legal updates is a complex and time-consuming task. This AI-driven agent automates regulatory tracking, delivering precise and timely insights. By providing summaries and actionable recommendations, it helps organizations quickly adapt to new requirements and reduce compliance risks.  
+
+## Intelligent Monitoring & Adaptation  
+- **Automated Regulatory Updates**: Identifies and summarizes legal and compliance changes, reducing reliance on manual tracking.  
+- **Context-Aware Insights**: Interprets how new regulations impact existing policies and operational workflows.  
+- **Reliable Decision Support**: Ensures accuracy and relevance by flagging misinformation and verifying sources.  
+
+## Seamless User Experience  
+- **Effortless Navigation & Accessibility**: Designed for professionals with varying levels of technical expertise, ensuring intuitive interaction.  
+- **Clear & Transparent Information**: Regulatory updates are presented with structured explanations and linked references for easy validation.  
+- **Engaging & Interactive**: Users can query specific regulations, receive instant responses, and explore real-time compliance insights in an interactive format.  
+
 A real-time multimodal RAG agent powered by Gemini, supporting audio/video/text chat with vector DB-backed responses
 
 Agent generated with [`googleCloudPlatform/agent-starter-pack`](https://github.com/GoogleCloudPlatform/agent-starter-pack)
