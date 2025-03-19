@@ -36,7 +36,7 @@ def format_claims(response):
 
 def fact_check(query: str) -> dict[str, str]:
     """
-    Retrieves fact-check results from Google's Fact Check Tools API.
+    You need to use this tool for fact checks. Retrieves fact-check results from Google's Fact Check Tools API.
     
     Args:
         query: Search query string related to the fact-check topic.
