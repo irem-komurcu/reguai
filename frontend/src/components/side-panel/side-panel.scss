@@ -19,7 +19,7 @@
   .react-select {
     background: var(--Neutral-20);
     color: var(--Neutral-90);
-    width: 193px;
+    width: 400px;
     height: 30px;
 
     .react-select__single-value {
@@ -204,7 +204,7 @@
 
   .side-panel-container {
     align-self: flex-end;
-    width: 400px;
+    width: 600px;
     flex-grow: 1;
     overflow-x: hidden;
     overflow-y: auto;
@@ -316,3 +316,59 @@
   line-height: 1.75rem;
   padding: 4px;
 }
+
+.disclaimer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  .disclaimer-content {
+    background: white;
+    padding: 30px; /* Increase padding for better spacing */
+    border-radius: 10px;
+    max-width: 70%; /* Increase max width */
+    width: 70%; /* Make it take up more space */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color: #666;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+      text-align: justify; /* Makes text more readable */
+      line-height: 1.5;
+      max-width: 90%; /* Avoid text stretching too much */
+      margin: 0 auto; /* Center text properly */
+    }
+
+    .disclaimer-btn {
+      background: #007bff;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background 0.3s ease-in-out;
+
+      &:hover {
+        background: #0056b3;
+      }
+    }
+  }
+}
+
