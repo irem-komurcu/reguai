@@ -1,19 +1,19 @@
 /**
- * Copyright 2025 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
+* Copyright 2025 Google LLC
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ 
 /* stylelint-disable */
 :root {
   --text: white;
@@ -31,51 +31,51 @@
   --accent-blue-active: #98beff;
   --accent-blue-headers: #448dff;
   --accent-green: rgb(168, 218, 181);
-
+ 
   --midnight-blue: rgb(0, 18, 51);
   --blue-30: #99beff;
-
+ 
   --accent-red: #ff4600;
-
+ 
   --background: var(--gray-900);
   --color: var(--text);
-
+ 
   scrollbar-color: var(--gray-600) var(--gray-900);
   scrollbar-width: thin;
-
-  --font-family: "Space Mono", monospace;
-
+ 
+  --font-family: "Google Sans", sans-serif; /* Changed to Google Sans */
+ 
   /* */
-  --Neutral-00: #000;
-  --Neutral-5: #181a1b;
-  --Neutral-10: #1c1f21;
-  --Neutral-15: #232729;
-  --Neutral-20: #2a2f31;
-  --Neutral-30: #21a7dc;
-  --Neutral-50: #707577;
-  --Neutral-60: #888d8f;
+  --Neutral-00: rgb(235,235,235);
+  --Neutral-5: rgb(226, 226, 226);
+  --Neutral-10: #545050d4;
+  --Neutral-15: #6b6666d4; /* Select kısmı */
+  --Neutral-20: #312a2a; /* ayraçlar */
+  --Neutral-30: rgb(10, 152, 43);
+  --Neutral-50: #ffa700;
+  --Neutral-60: #9d1111;
   --Neutral-80: #c3c6c7;
   --Neutral-90: #e1e2e3;
-
+ 
   --Green-500: #0d9c53;
   --Green-700: #025022;
-
-  --Blue-500: #1f94ff;
-  --Blue-800: #0f3557;
-
+ 
+  --Blue-500: #0975da;
+  --Blue-800: #0b3d69;
+ 
   --Red-400: #ff9c7a;
   --Red-500: #ff4600;
   --Red-600: #e03c00;
   --Red-700: #bd3000;
 }
-
+ 
 body {
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-family); /* Use the variable */
   background: var(--Neutral-30);
 }
-
+ 
 .material-symbols-outlined {
-  &.filled {
+&.filled {
     font-variation-settings:
       "FILL" 1,
       "wght" 400,
@@ -83,75 +83,58 @@ body {
       "opsz" 24;
   }
 }
-
-.space-mono-regular {
-  font-family: "Space Mono", monospace;
-  font-weight: 400;
-  font-style: normal;
+ 
+.space-mono-regular,
+.space-mono-bold,
+.space-mono-regular-italic,
+.space-mono-bold-italic{
+    font-family: var(--font-family);
 }
-
-.space-mono-bold {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.space-mono-regular-italic {
-  font-family: "Space Mono", monospace;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.space-mono-bold-italic {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-style: italic;
-}
-
+ 
 .hidden {
   display: none;
 }
-
+ 
 .flex {
   display: flex;
 }
-
+ 
 .h-screen-full {
   height: 100vh;
 }
-
+ 
 .w-screen-full {
   width: 100vw;
 }
-
+ 
 .flex-col {
   flex-direction: column;
 }
-
+ 
 @media (prefers-reduced-motion: no-preference) {
 }
-
+ 
 .streaming-console {
   background: var(--Neutral-5);
   color: #151212;
   display: flex;
   height: 100vh;
   width: 100vw;
-
+ 
   a,
   a:visited,
   a:active {
     color: var(--gray-300);
   }
-
+ 
   .disabled {
     pointer-events: none;
-
+ 
     > * {
       pointer-events: none;
     }
   }
-
+ 
   main {
     position: relative;
     display: flex;
@@ -163,14 +146,14 @@ body {
     max-width: 100%;
     overflow: hidden;
   }
-
+ 
   .main-app-area {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
   }
-
+ 
   .function-call {
     position: absolute;
     top: 0;
@@ -179,7 +162,7 @@ body {
     overflow-y: auto;
   }
 }
-
+ 
 /* video player */
 .stream {
   flex-grow: 1;

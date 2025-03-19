@@ -74,11 +74,11 @@ export default function SidePanel() {
         </div>
       )}
 
-      <header className="top">
+<header className="top">
         <div className="logo-container">
-          <img src="/regupng.png" alt="Regu SELIN" className="logo" />
+          <img src="/regupng.png" alt="Regu-ai" className="logo" style={{ width: '140px', height: '140px' }}/>
         </div>
-        <h2>Regu AI</h2>
+        <h2 style={{ color: 'var(--primary-color, #464646)' }}>Regulatory Expert</h2>
         {open ? (
           <button className="opener" onClick={() => setOpen(false)}>
             <RiSidebarFoldLine color="#b4b8bb" />
