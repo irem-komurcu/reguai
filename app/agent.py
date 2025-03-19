@@ -13,28 +13,33 @@
 # limitations under the License.
 
 import os
-
-
 from google import genai
 from google.genai.types import (
+    Tool,
     Content,
     LiveConnectConfig,
+    FunctionDeclaration,
 )
 
-
+from app.client import genai_client
+from app.tools.fact_check import fact_check
+from app.tools.retriver import retrieve_docs
 from app.templates import SYSTEM_INSTRUCTION
-from app.tools.retriver import retrieve_docs, retrieve_docs_tool
 
 MODEL_ID = "gemini-2.0-flash-001"
 
 
+tool_functions = {"retrieve_docs": retrieve_docs, "fact_check": fact_check}
 
-
-
-tool_functions = {"retrieve_docs": retrieve_docs}
-
+tool_declarations = Tool(
+    function_declarations=[
+        FunctionDeclaration.from_callable(client=genai_client, callable=retrieve_docs),
+        FunctionDeclaration.from_callable(client=genai_client, callable=fact_check)
+    ]
+)
+ 
 live_connect_config = LiveConnectConfig(
     response_modalities=["AUDIO"],
-    tools=[retrieve_docs_tool],
+    tools=[tool_declarations],
     system_instruction=Content(parts=[{"text": SYSTEM_INSTRUCTION}]),
 )

@@ -26,7 +26,7 @@ from google.genai import types
 from google.genai.types import LiveServerToolCall
 from pydantic import BaseModel
 from websockets.exceptions import ConnectionClosedError
-from app.tools.retriver import genai_client
+from app.client import genai_client
 from app.agent import MODEL_ID, live_connect_config, tool_functions
 
 app = FastAPI()
@@ -104,7 +104,12 @@ class GeminiSession:
         """
         for fc in tool_call.function_calls:
             logging.debug(f"Calling tool function: {fc.name} with args: {fc.args}")
-            response = self._get_func(fc.name)(**fc.args)
+            # Dynamically call the appropriate tool based on fc.name
+            if fc.name in self.tool_functions:
+                response = self.tool_functions[fc.name](**fc.args)
+            else:
+                response = {"error": f"Tool function '{fc.name}' not found."}
+            
             tool_response = types.LiveClientToolResponse(
                 function_responses=[
                     types.FunctionResponse(name=fc.name, id=fc.id, response=response)
