@@ -73,17 +73,50 @@
         opacity: 1;
       }
     }
+    .logo-container .logo {
+      opacity: 1;
+      transition: opacity 0.2s ease-in;
+      display: block; // Ensure logo is visible when open
+    }
+  }
+
+  &:not(.open) {
+    .logo-container .logo {
+      opacity: 0;
+      display: none; // Hide the logo when closed
+      transition: opacity 0.2s ease-in, display 0s linear 0.2s; // Add display transition with delay
+    }
+
+    .side-panel-container {
+      opacity: 0;
+      display: none;
+      transition: all 0.2s ease-in allow-discrete;
+      transition-delay: 0.1s;
+    }
   }
 
   .top {
     display: flex;
     width: calc(100% - 45px);
-    justify-content: space-between;
+    justify-content: space-between; // Add this
     align-items: center;
     padding: 12px 20px 12px 25px;
     border-bottom: 1px solid var(--Neutral-20);
+    gap: 10px; // Add a gap between the logo and the title
 
+    .logo-container {
+      display: flex;
+      align-items: center;
+      height: 100%; // Make sure it fills the .top height
+    }
+
+    .logo {
+      height: 50px; // Adjust as needed
+      width: auto;
+      margin-right: 10px; // Add spacing between logo and text
+    }
     h2 {
+      flex-grow: 1;
       position: relative;
       color: var(--Neutral-90, #e1e2e3);
       font-family: "Google Sans";
@@ -250,7 +283,7 @@
   }
 }
 .side-panel.open {
-  width: 400px;
+  width: 600px;
   height: 100vh;
 }
 

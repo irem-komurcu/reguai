@@ -23,6 +23,7 @@ import { useLoggerStore } from "../../utils/store-logger";
 import Logger, { LoggerFilterType } from "../logger/Logger";
 import "./side-panel.scss";
 
+
 const filterOptions = [
   { value: "conversations", label: "Conversations" },
   { value: "tools", label: "Tool Use" },
@@ -75,7 +76,10 @@ export default function SidePanel() {
   return (
     <div className={`side-panel ${open ? "open" : ""}`}>
       <header className="top">
-        <h2>Console</h2>
+        <div className="logo-container">
+          <img src="/regupng.png" alt="Regu SELIN " className="logo" />
+        </div>
+        <h2>Regu AI</h2>
         {open ? (
           <button className="opener" onClick={() => setOpen(false)}>
             <RiSidebarFoldLine color="#b4b8bb" />
