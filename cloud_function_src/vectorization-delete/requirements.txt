@@ -1,0 +1,7 @@
+functions-framework==3.*
+pg8000
+asyncio
+asyncpg
+get_metadata
+cloud-sql-python-connector
+google-cloud-secret-manager

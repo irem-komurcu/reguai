@@ -1,0 +1,10 @@
+functions-framework==3.*
+langgraph
+PyMuPDF
+pymupdf4llm
+langchain_community
+langchain_google_vertexai
+get_metadata
+langchain_google_cloud_sql_pg
+google-cloud-secret-manager
+google-cloud-documentai
