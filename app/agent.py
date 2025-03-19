@@ -39,7 +39,7 @@ tool_declarations = Tool(
 )
  
 live_connect_config = LiveConnectConfig(
-    response_modalities=["AUDIO"],
+    response_modalities=["AUDIO", "TEXT"],
     tools=[tool_declarations],
     system_instruction=Content(parts=[{"text": SYSTEM_INSTRUCTION}]),
 )

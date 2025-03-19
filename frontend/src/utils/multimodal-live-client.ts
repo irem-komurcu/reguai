@@ -176,8 +176,8 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
   }
   protected async receive(blob: Blob) {
     const response = (await blobToJSON(blob)) as LiveIncomingMessage;
-    console.log("Parsed response:", response);
-
+    console.log("Parsed response:", response); // response u logla.
+  
     if (isToolCallMessage(response)) {
       this.log("server.toolCall", response);
       this.emit("toolcall", response.toolCall);
@@ -188,17 +188,24 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
       this.emit("toolcallcancellation", response.toolCallCancellation);
       return;
     }
-
+  
     if (isSetupCompleteMessage(response)) {
       this.log("server.send", "setupComplete");
       this.emit("setupcomplete");
       return;
     }
-
+  
     // this json also might be `contentUpdate { interrupted: true }`
     // or contentUpdate { end_of_turn: true }
     if (isServerContenteMessage(response)) {
       const { serverContent } = response;
+      console.log("serverContent:", serverContent); // serverContent i logla.
+  
+      if (!serverContent) {
+        console.error("serverContent is undefined");
+        return; // veya uygun bir hata işleme
+      }
+  
       if (isInterrupted(serverContent)) {
         this.log("receive.serverContent", "interrupted");
         this.emit("interrupted");
@@ -209,20 +216,31 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
         this.emit("turncomplete");
         //plausible there's more to the message, continue
       }
-
+  
       if (isModelTurn(serverContent)) {
+        console.log("serverContent.modelTurn:", serverContent.modelTurn); // serverContent.modelTurn logla.
+  
+        if (!serverContent.modelTurn || !serverContent.modelTurn.parts) {
+          console.error("serverContent.modelTurn or serverContent.modelTurn.parts is undefined");
+          return; // veya uygun bir hata işleme
+        }
         let parts: Part[] = serverContent.modelTurn.parts;
-
+  
+        if (!parts) {
+          console.error("serverContent.modelTurn.parts is undefined");
+          return; // veya uygun bir hata işleme
+        }
+  
         // when its audio that is returned for modelTurn
         const audioParts = parts.filter(
           (p) => p.inlineData && p.inlineData.mimeType.startsWith("audio/pcm"),
         );
         const base64s = audioParts.map((p) => p.inlineData?.data);
-
+  
         // strip the audio parts out of the modelTurn
         const otherParts = difference(parts, audioParts);
         // console.log("otherParts", otherParts);
-
+  
         base64s.forEach((b64) => {
           if (b64) {
             const data = base64ToArrayBuffer(b64);
@@ -233,9 +251,9 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
         if (!otherParts.length) {
           return;
         }
-
+  
         parts = otherParts;
-
+  
         const content: ModelTurn = { modelTurn: { parts } };
         this.emit("content", content);
         this.log(`server.content`, response);
@@ -245,6 +263,7 @@ export class MultimodalLiveClient extends EventEmitter<MultimodalLiveClientEvent
       this.log("received unmatched message", response);
     }
   }
+  
 
   /**
    * send realtimeInput, this is base64 chunks of "audio/pcm" and/or "image/jpg"
